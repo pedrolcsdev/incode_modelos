@@ -1,5 +1,5 @@
 import os
-import chromadb
+from chromadb import Client
 from groq import Groq
 from dotenv import load_dotenv
 from pypdf import PdfReader
@@ -12,7 +12,7 @@ MODELO_IA = "openai/gpt-oss-20b"
 
 # Inicialização dos Clientes
 client_groq = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-client_chroma = chromadb.PersistentClient(path="./banco_vetorial")
+client_chroma = Client()
 colecao = client_chroma.get_or_create_collection(name="conhecimento_empresa")
 
 # --- MÓDULO 1: LEITURA DE ARQUIVOS ---
